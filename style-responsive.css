@@ -86,7 +86,8 @@
 		font-size: 15px;
 		margin-bottom: 30px;
 	}
-	.visual{
+	.banner .visual img{
+		float: center;
 		max-width: 80%;
 	}
 
