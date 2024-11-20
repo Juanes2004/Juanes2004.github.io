@@ -86,9 +86,9 @@
 		font-size: 15px;
 		margin-bottom: 30px;
 	}
-
-
-
+	.visual{
+		max-width: 80%;
+	}
 
 	.about{
 		padding: 60px 0;
