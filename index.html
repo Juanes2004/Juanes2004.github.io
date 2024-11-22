@@ -177,50 +177,46 @@
 
 	<section class="contact" id="contact">
 		<div class="container">
-
-			<h2>Contáctame</h2>
-
-			<div class="contact-options flex-sb">
-				<div class="formarea">
-					<form id="contactform" method="post" action="form/contactform.php" class="contactform flex-sb">
-						<fieldset class="half">
-							<label>Nombre completo*</label>
-							<input type="text" name="name">
-						</fieldset>
-						<fieldset class="half">
-							<label>Correo*</label>
-							<input type="email" name="email">
-						</fieldset>
-						<fieldset class="half">
-							<label>Asunto*</label>
-							<input type="text" name="subject">
-						</fieldset>
-						<fieldset class="half">
-							<label>Teléfono*</label>
-							<input type="text" name="phone">
-						</fieldset>
-						<fieldset class="full">
-							<label>Mensaje*</label>
-							<textarea name="message"></textarea>
-						</fieldset>
-						<button type="submit" name="submit" id="submit">Enviar &nbsp; <i class="fa-regular fa-envelope"></i></button>
-					</form>
-				</div>
-				<div class="contact-info">
-					<ul>
-						<li>
-							<a href="mailto:juanesgaibor22@gmail.com"><i class="fa-regular fa-envelope"></i> &nbsp; <strong>Correo electrónico:</strong> juanesgaibor22@gmail.com</a>
-						</li>
-						<li>
-							<a href="tel:+34666872537"><i class="fa-solid fa-phone"></i> &nbsp; <strong>Teléfono:</strong> (+34) 666 87 25 37</a>
-						</li>
-					</ul>
-				</div>
+	  
+		  <h2>Contáctame</h2>
+	  
+		  <div class="contact-options flex-sb">
+			<div class="formarea">
+			  <form id="contactform" class="contactform flex-sb">
+				<fieldset class="half">
+				  <label>Nombre completo*</label>
+				  <input type="text" name="from_name" required>
+				</fieldset>
+				<fieldset class="half">
+				  <label>Correo*</label>
+				  <input type="email" name="reply_to" required>
+				</fieldset>
+				<fieldset class="half">
+				  <label>Asunto*</label>
+				  <input type="text" name="subject" required>
+				</fieldset>
+				<fieldset class="full">
+				  <label>Mensaje*</label>
+				  <textarea name="message" required></textarea>
+				</fieldset>
+				<button type="submit" id="submit">Enviar &nbsp; <i class="fa-regular fa-envelope"></i></button>
+			  </form>
 			</div>
-				
-
+			<div class="contact-info">
+			  <ul>
+				<li>
+				  <a href="mailto:juanesgaibor22@gmail.com"><i class="fa-regular fa-envelope"></i> &nbsp; <strong>Correo electrónico:</strong> juanesgaibor22@gmail.com</a>
+				</li>
+				<li>
+				  <a href="tel:+34666872537"><i class="fa-solid fa-phone"></i> &nbsp; <strong>Teléfono:</strong> (+34) 666 87 25 37</a>
+				</li>
+			  </ul>
+			</div>
+		  </div>
+	  
 		</div>
-	</section>
+	  </section>
+	  
 	<!--contact-->
 
 
@@ -240,3 +236,23 @@
 </body>
 </html>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  // Inicializa EmailJS con tu clave pública
+  emailjs.init("nOiOkQ5D6JZnXOdZK");
+
+  // Selecciona el formulario y agrega el evento "submit"
+  document.getElementById("contactform").addEventListener("submit", function(event) {
+    event.preventDefault(); // Previene la recarga de la página
+
+    // Enviar el formulario a través de EmailJS
+    emailjs.sendForm("service_my2904h", "template_5s7xnn8", this)
+      .then(function(response) {
+        console.log("Correo enviado con éxito:", response.status, response.text);
+        alert("Tu mensaje fue enviado correctamente. ¡Gracias por contactarnos!");
+      }, function(error) {
+        console.error("Hubo un problema al enviar el correo:", error);
+        alert("Ocurrió un error al enviar tu mensaje. Por favor, intenta de nuevo.");
+      });
+  });
+</script>
