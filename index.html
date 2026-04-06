@@ -104,9 +104,15 @@
 			</div>
 
 
-			<div class="visual">
-				<img src="images/Hiking.jpg" alt="" class="fit">
-			</div>
+<div class="visual">
+    <div class="about-carousel">
+        <button class="carousel-btn prev" onclick="changeAboutSlide(-1)">&#10094;</button>
+
+        <img id="about-carousel-image" src="images/Portada.jpg" alt="Imagen sobre mí" class="flt">
+
+        <button class="carousel-btn next" onclick="changeAboutSlide(1)">&#10095;</button>
+    </div>
+</div>
 
 
 		</div>
@@ -242,6 +248,31 @@
 		</div>
 	</footer>
 	<!--footer-->
+<script>
+    const aboutImages = [
+        "images/Portada.jpg",
+        "images/Oviedo.jpg",
+        "images/Vienna.jpg",
+        "images/Sanse.jpg",
+        "images/Quito.jpg"
+    ];
+
+    let aboutCurrentIndex = 0;
+
+    function changeAboutSlide(direction) {
+        aboutCurrentIndex += direction;
+
+        if (aboutCurrentIndex < 0) {
+            aboutCurrentIndex = aboutImages.length - 1;
+        }
+
+        if (aboutCurrentIndex >= aboutImages.length) {
+            aboutCurrentIndex = 0;
+        }
+
+        document.getElementById("about-carousel-image").src = aboutImages[aboutCurrentIndex];
+    }
+</script>
 </body>
 </html>
 
